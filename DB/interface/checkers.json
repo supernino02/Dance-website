@@ -1,0 +1,57 @@
+{
+    "check_name": {
+        "return": "SCALAR",
+        "query": "CALL check_name(?)",
+        "parameters_required": "s"
+    },
+    "check_surname": {
+        "return": "SCALAR",
+        "query": "CALL check_surname(?)",
+        "parameters_required": "s"
+    },
+    "check_email": {
+        "return": "SCALAR",
+        "query": "CALL check_email(?)",
+        "parameters_required": "s"
+    },
+    "check_fiscal_code": {
+        "return": "SCALAR",
+        "query": "CALL check_fiscal_code(?)",
+        "parameters_required": "s"
+    },
+    "check_gender": {
+        "return": "SCALAR",
+        "query": "CALL check_gender(?)",
+        "parameters_required": "s"
+    },
+    "check_raw_password": {
+        "return": "SCALAR",
+        "query": "CALL check_raw_password(?)",
+        "parameters_required": "s"
+    },
+    "check_phone_number": {
+        "return": "SCALAR",
+        "query": "CALL check_phone_number(?)",
+        "parameters_required": "s"
+    },
+    "check_price": {
+        "return": "SCALAR",
+        "query": "CALL check_price(?)",
+        "parameters_required": "d"
+    },
+    "check_discount": {
+        "return": "SCALAR",
+        "query": "CALL check_discount(?)",
+        "parameters_required": "d"
+    },
+    "check_quantity": {
+        "return": "SCALAR",
+        "query": "CALL check_quantity(?)",
+        "parameters_required": "i"
+    },
+    "check_star_evaluation": {
+        "return": "SCALAR",
+        "query": "CALL check_star_evaluation(?)",
+        "parameters_required": "d"
+    }
+}

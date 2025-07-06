@@ -1,0 +1,6 @@
+{
+    "service_call":       "INSERT INTO `services_requested`  (`request_name`, `user`, `actual_privilege`, `session_id`) VALUES (?,?,?,?)",
+    "service_parameters":  "INSERT INTO `services_parameters`(`id_request`, `parameters_list`)                         VALUES (?,?)  ",
+    "service_response":   "INSERT INTO `services_response`   (`id_request`, `result`, `additional_info`)                VALUES (?,?,?)  ",
+    "query_call":         "INSERT INTO `query_requested`     (`id_request`, `query_name`, `parameters`)                 VALUES (?,?,?)  "
+}

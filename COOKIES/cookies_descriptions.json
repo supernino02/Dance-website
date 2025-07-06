@@ -1,0 +1,75 @@
+{
+   "COOKIE_PREFERENCES": {
+      "name": "cookie_preferences",
+      "options": {
+         "path": "/",
+         "secure": true,
+         "httponly": false,
+         "sameSite": "Strict"
+      },
+      "default_expiration_days": 90,
+      "type": "essential",
+      "description_header": "Salva le Tue Preferenze",
+      "description_body": [
+         "Utilizziamo un cookie per ricordare le tue preferenze riguardo ai cookie.",
+         " Questo ci consente di applicare automaticamente le tue scelte di privacy nelle future visite, senza richiederti di impostare nuovamente le preferenze ogni volta."
+      ]
+   },
+   "DEFAULT_SESSION_COOKIE": {
+      "name": "PHPSESSID",
+      "type": "essential",
+      "description_header": "Gestisce la SESSIONE",
+      "description_body": [
+         "Per garantire una navigazione fluida e personalizzata, utilizziamo un cookie di sessione che memorizza l' autenticazione durante la tua visita.",
+         "Non è possibile rifiutare questo cookie, ma siamo tenuti a informarti del suo utilizzo. Il cookie verrà automaticamente eliminato quando chiudi il browser."
+      ]
+   },
+   "REMEMBER_ME_TOKEN":{
+      "name":"__Host-LoginToken",
+      "options" : {
+         "path": "/",
+         "secure": true,
+         "httponly": true,
+         "sameSite": "Strict"
+      },
+      "default_expiration_days": 30,
+      "type" : "essential",
+      "description_header": "Permette login con TOKEN",
+      "description_body": [
+         "Per migliorare la tua esperienza di navigazione, utilizziamo un cookie che pemette un login implicito con le tue credenziali.",
+         "Non è possibile rifiutare questo cookie, ma siamo tenuti a informarti del suo utilizzo."
+      ]
+   },
+   "ID_PRODUCT":{
+      "name":"last_product_searched",
+      "options" : {
+         "path": "/",
+         "secure": true,
+         "httponly": false,
+         "sameSite": "Strict"
+      },
+      "default_expiration_days":30,
+      "type": "analytic",
+      "description_header": "Memorizza i prodotti che cerchi",
+      "description_body": [
+         "Per migliorare la tua esperienza di navigazione, utilizziamo un cookie che memorizza l'ultimo prodotto che hai cercato.",
+         "Questo ci permette di mostrarti rapidamente i prodotti di tuo interesse alla tua prossima visita."
+      ]
+   },
+   "VISITED_PAGE":{
+      "name":"last_page_visited",
+      "options" : {
+         "path": "/",
+         "secure": true,
+         "httponly": false,
+         "sameSite": "Strict"
+      },
+      "default_expiration_days":30,
+      "type": "analytic",
+      "description_header": "Ricorda le tue visite sul sito",
+      "description_body": [
+         "Per offrirti una navigazione più fluida, utilizziamo un cookie che memorizza l'ultima pagina che hai visitato sul nostro sito.",
+         "Questo ci aiuta a riportarti rapidamente alla tua pagina di interesse alla tua prossima visita."
+      ]
+   }
+}

@@ -1,0 +1,13 @@
+{
+    "server_name": "localhost",
+    "user_name": "NAME",
+    "password": "PASSWORD",
+    "db_name": "DB_NAME",
+    "port": null,
+    "socket": null,
+
+    "INTERFACE_FILES": [
+        "DB/interface/queries.json",
+        "DB/interface/checkers.json"
+    ]
+}

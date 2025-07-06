@@ -1,0 +1,273 @@
+{
+    "get_product":{
+        "return":"ROW",
+        "query": "SELECT * FROM products WHERE id_product = ?",
+        "parameters_required": "i"
+    },
+
+    "get_all_course_levels": {
+        "return": "TABLE",
+        "query": "SELECT * FROM levels l WHERE EXISTS(SELECT 1 FROM purchasable_products p WHERE p.level = l.name) ORDER BY difficulty_level"
+    },
+    "get_all_dance_disciplines": {
+        "return": "TABLE",
+        "query": "SELECT * FROM dance_disciplines d WHERE EXISTS(SELECT 1 FROM purchasable_products p WHERE d.type = p.discipline)"
+    },    
+    "get_all_course_types": {
+        "return": "TABLE",
+        "query": "SELECT * FROM product_types t WHERE EXISTS(SELECT 1 FROM purchasable_courses c WHERE t.type = c.type)"
+    },
+
+
+    "get_related_products": {
+        "return": "TABLE",
+        "query": "CALL relatedProducts(?,?)",
+        "parameters_required": "ii"
+    },
+    "get_filtered_courses": {
+        "return": "TABLE",
+        "query": "SELECT * FROM purchasable_courses WHERE (level = ? OR ? IS NULL) AND (type = ? OR ? IS NULL) AND (discipline = ? OR ? IS NULL)",
+        "parameters_required": "ssssss"
+    },
+    "get_filtered_events": {
+        "return": "TABLE",
+        "query": "SELECT * FROM purchasable_events WHERE (level = ? OR ? IS NULL) AND (discipline = ? OR ? IS NULL)",
+        "parameters_required": "ssss"
+    },
+
+    "get_best_products_ids":{
+        "return":"TABLE",
+        "query": "CALL BestProducts(?,?)",
+        "parameters_required": "is"
+    },
+
+    "get_closest_events":{
+        "return":"TABLE",
+        "query": "SELECT * FROM purchasable_events WHERE expiration_date IS NOT NULL ORDER BY expiration_date ASC LIMIT ?",
+        "parameters_required": "i"
+    },
+
+    "search_purchasable_products":{
+        "return": "TABLE",
+        "query": "CALL SearchProducts(?)",
+        "parameters_required": "s"
+    },
+
+    "get_public_files": {
+        "return": "TABLE",
+        "query": "SELECT path,description FROM public_files WHERE id_product = ?",
+        "parameters_required": "i"
+    },   
+    "get_purchasable_files": {
+        "return": "TABLE",
+        "query": "SELECT `id_product`,`n_file`, `name`, `description` FROM purchasable_files WHERE id_product = ? ORDER BY n_file",
+        "parameters_required": "i"
+    }, 
+    "get_purchasable_files_paths":{
+        "return": "TABLE",
+        "query": "SELECT `path` FROM purchasable_files WHERE id_product = ? ORDER BY n_file",
+        "parameters_required": "i"
+    },
+    "get_purchasable_path": {
+        "return": "SCALAR",
+        "query": "SELECT `path` FROM purchasable_files WHERE id_product = ? AND n_file = ?",
+        "parameters_required": "ii"
+    },
+
+
+    "get_cart": {
+        "return": "TABLE",
+        "query": "SELECT quantity, products.* FROM products_in_carts NATURAL JOIN products WHERE user = ?",
+        "parameters_required": "s"
+    },
+    "get_quantity_from_cart":{
+        "return": "SCALAR",
+        "query": "SELECT quantity FROM products_in_carts WHERE user = ? AND id_product = ? FOR UPDATE",
+        "parameters_required": "si"
+    },
+    "insert_into_cart":{
+        "return": "AFFECTED_ROWS",
+        "query": "INSERT INTO products_in_carts(`user`, `id_product`, `quantity`) VALUES (?,?,?)",
+        "parameters_required": "sii"
+    },
+    "update_cart":{
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `products_in_carts` SET `quantity` = ? WHERE user = ? AND id_product = ?",
+        "parameters_required": "isi"
+    },
+    "remove_from_cart":{
+        "return": "AFFECTED_ROWS",
+        "query": "DELETE FROM `products_in_carts` WHERE user = ? AND id_product = ?",
+        "parameters_required": "si"
+    },
+    "empty_cart": {
+        "return": "AFFECTED_ROWS",
+        "query": "DELETE FROM products_in_carts WHERE user = ?",
+        "parameters_required": "s"
+    },
+
+
+
+    "create_purchase":{
+        "return": "INSERT_AUTOINCREMENT",
+        "query": "INSERT INTO `purchases`(`user`,`total_price`)  VALUES (?,?)",
+        "parameters_required": "sd"
+    },
+    "update_purchase_total":{
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `purchases` SET `total_price` = ? WHERE id_purchase = ?",
+        "parameters_required": "di"
+    },
+    "add_product_purchased":{
+        "return": "AFFECTED_ROWS",
+        "query": "INSERT INTO `products_purchased`(`id_purchase`, `id_product`, `quantity`, `unitary_price`) VALUES (?,?,?,?)",
+        "parameters_required": "iiid"
+    },
+    "get_products_purchased": {
+        "return": "TABLE",
+        "query": "SELECT id_product, quantity, unitary_price from products_purchased WHERE id_purchase = ?",
+        "parameters_required": "i"
+    },
+    "get_purchase_info":{
+        "return": "ROW",
+        "query": "SELECT * from purchases WHERE id_purchase = ? AND user = ?",
+        "parameters_required": "is"
+    },
+    "get_all_purchase_ids": {
+        "return": "TABLE",
+        "query": "SELECT id_purchase from purchases WHERE user = ?",
+        "parameters_required": "s"
+    },
+
+
+    
+    "create_token":{
+        "return": "AFFECTED_ROWS",
+        "query": "INSERT INTO tokens VALUES (?,?,DATE_ADD(NOW(), INTERVAL ? DAY))",
+        "parameters_required": "ssi"
+    },
+    "verify_token":{
+        "return": "ROW",
+        "query": "SELECT users.* FROM tokens JOIN users on email=user WHERE token = ?",
+        "parameters_required": "s"
+    },
+    "delete_token":{
+        "return": "AFFECTED_ROWS",
+        "query": "DELETE FROM tokens WHERE user = ? AND token = ?",
+        "parameters_required": "ss"
+    },
+    "delete_associated_tokens":{
+        "return": "AFFECTED_ROWS",
+        "query": "DELETE FROM tokens WHERE user = ?",
+        "parameters_required": "s"
+    },
+
+
+
+    "create_user":{
+        "return": "AFFECTED_ROWS",
+        "query": "INSERT INTO `users`(`name`, `surname`,`email`, `password`, `phone_number`, `fiscal_code`, `gender`) VALUES (?,?,?,?,?,?,?)",
+        "parameters_required": "sssssss"
+    },
+    "change_privileges": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE users SET `role` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+
+
+    "get_user_info": {
+        "return": "ROW",
+        "query": "SELECT * FROM users WHERE `email` = ?",
+        "parameters_required": "s"
+    },
+    "update_user_name": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `users` SET `name` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+    "update_user_surname": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `users` SET `surname` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+    "update_user_phone_number": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `users` SET `phone_number` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+    "update_user_fiscal_code": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `users` SET `fiscal_code` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+    "update_user_gender": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `users` SET `gender` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+    "update_user_password": {
+        "return": "AFFECTED_ROWS",
+        "query": "UPDATE `users` SET `password` = ? WHERE `email` = ?",
+        "parameters_required": "ss"
+    },
+
+
+
+    "get_sessions_summary":{
+        "return": "TABLE",
+        "query": "CALL getSessionsSummary()"
+    },
+    "get_logged_services_by_result": {
+        "return": "TABLE",
+        "query": "CALL GetServicesByResult(?)",
+        "parameters_required": "s"
+    },
+
+
+
+    "get_all_purchasables": {
+        "return": "TABLE",
+        "query": "SELECT id_product, path, 'purchasable' as type FROM purchasable_files"
+    },
+    "get_all_posters": {
+        "return": "TABLE",
+        "query": "SELECT id_product, poster_path as path, 'poster' as type FROM products WHERE poster_path IS NOT NULL"
+    },
+    "get_all_public_files": {
+        "return": "TABLE",
+        "query": "SELECT id_product, path, 'public' as type FROM public_files"
+    },
+    "get_all_product_types_icons": {
+        "return": "TABLE",
+        "query": "SELECT type as 'type_name',icon_path, 'product_type' as type FROM product_types"
+    },
+
+
+    "get_review": {
+        "return": "ROW",
+        "query": "SELECT r.* FROM reviews r NATURAL JOIN purchases WHERE id_product = ? ANd user = ?",
+        "parameters_required": "is"
+    },
+    "get_product_reviews": {
+        "return": "TABLE",
+        "query": "SELECT r.*, u.name FROM reviews r NATURAL JOIN purchases p JOIN users u ON p.user=u.email WHERE id_product = ? ORDER BY r.date",
+        "parameters_required": "i"
+    },
+    "create_product_review": {
+        "return": "AFFECTED_ROWS",
+        "query": "INSERT INTO reviews(`id_purchase`, `id_product`, `star_evaluation`, `note`) VALUES (?,?,?,?)",
+        "parameters_required": "iids"
+    },
+
+    "check_product_not_expired": {
+        "return": "SCALAR",
+        "query": "SELECT EXISTS (SELECT 1 FROM purchasable_products WHERE id_product = ?);",
+        "parameters_required": "i"
+    },
+    "check_is_purchased": {
+        "return": "SCALAR",
+        "query": "SELECT id_purchase FROM products_purchased pp NATURAL JOIN purchases p WHERE pp.id_product = ? AND p.user = ? LIMIT 1",
+        "parameters_required": "is"
+    }
+}

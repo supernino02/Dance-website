@@ -1,0 +1,108 @@
+{
+    "BOOTSTRAP": {
+        "frontend":{
+            "component_manager.php" : ["ComponentManager"]
+        }
+    },
+    "PHP_BACKEND": {
+        "db_interface": {
+            "query":{
+                "executor": {
+                    "executor_abstract.php":["QueryExecutor"],
+                    "plain_query.php": ["PlainQueryExecutor"],
+                    "prepared_stmt.php": ["PreparedStmtExecutor"]
+                },
+                "extractor":{
+                    "extractor_abstract.php": ["QueryResultExtractor"],
+                    "extractors_modifiers.php":[
+                        "ExtractorAffectedRows",
+                        "ExtractorInsertAutoincrement"
+                    ],
+                    "extractors_retrievers.php":[
+                        "ExtractorScalar",
+                        "ExtractorRow",
+                        "ExtractorTable"
+                    ]
+                },
+                "query.php":["Query"],
+                
+                "exceptions.php" :[
+                    "QueryFormatException",
+                    "QueryException",
+                    "BindStmtException",
+                    "BindPlainQueryException",
+                    "QueryResultException"
+                ]
+            },
+            "db_virtualizer.php": ["VirtualDB"],
+            "query_wrapper.php" :["QueryWrapper"],
+            "exceptions.php": [
+                "UnreachableDBException",
+                "InvalidRequestedQueryException",
+                "CheckersException"
+            ]
+        },
+        "logger": {
+            "log_sql.php": ["LogSQL"],
+            "log_file.php": ["LogFile"],
+            "log_none.php": [
+                "LogHandler",
+                "LogNone"
+            ]
+        },
+        "service_handler": {
+            "handler.php": ["ServicesHandler"],
+            "exceptions.php": [
+                "InvalidServiceBindException",
+                "AccessViolationException",
+                "InvalidServiceException"
+            ],
+            "providers" :{
+                "abstract_provider.php": ["AbstractServicesProvider"],
+                "providers.php": [
+                    "OpenServicesProvider",
+                    "UserServicesProvider",
+                    "AdminServicesProvider"
+                ],
+                "service_interface.php": [
+                    "ServiceInterface",
+                    "ServiceParameter"
+                ]
+            }
+        },
+        "result": {
+            "result_abstract.php":  ["Result"],
+            "result_decorator.php": ["ResultVerbose"],
+            "result_types.php": [
+                "JSONResult",
+                "FILEResult",
+                "TEMPORARY_FILEResult"
+            ]
+        },
+        "cookie_manager": {
+            "cookie_manager.php": ["CookieManager"],
+            "exceptions.php": [
+                "InvalidCookiesDescription",
+                "UnknownCookieException"
+            ]
+        }
+    },
+    "SERVICES": {
+        "Cart.php":                ["Cart"],
+        "FileConsistency.php":     ["FileConsistency"],
+        "LogAnalysis.php":         ["LogAnalysis"],
+        "Login.php":               ["Login"],
+        "Logout.php":              ["Logout"],
+        "PersonalArea.php":        ["PersonalArea"],
+        "Product.php":             ["Product"],
+        "Purchase.php":            ["Purchase"],
+        "FilesPurchasable.php":    ["FilesPurchasable"],
+        "Registration.php":        ["Registration"],
+        "Review.php":              ["ReviewPublic","ReviewPrivate"],
+        "Token.php":               ["Token"],
+        "Utilities.php":           ["Utilities"],
+        "ProductTypes.php":        ["ProductTypes"],
+        "PrivilegesManagement.php":["PrivilegesManagement"],
+        "Cookie_preferences.php":  ["Cookie_preferences"]
+    }
+}

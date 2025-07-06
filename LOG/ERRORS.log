@@ -1,0 +1,62 @@
+2024/08/28 10:49:16.005 4ncmk411a1ram66vc7i8lp784k /~S5175710/index.php 130.251.248.69
+error including '../BOOTSTRAP/backend/initializer.php'
+
+2024/09/03 22:14:21.563 7s70qdp1dl3piqs0a176daidme /~S5175710/GATEWAY.php 79.40.123.151
+mysqli_sql_exception: Commands out of sync; you can't run this command now in /chroot/home/S5175710/PHP_BACKEND/db_interface/query/query_executor.php:64
+Stack trace:
+#0 /chroot/home/S5175710/PHP_BACKEND/db_interface/query/query_executor.php(64): mysqli->prepare()
+#1 /chroot/home/S5175710/PHP_BACKEND/db_interface/query/query_abstract.php(93): PreparedStmtExecutor->__construct()
+#2 /chroot/home/S5175710/PHP_BACKEND/db_interface/query/query_abstract.php(71): Query->__construct()
+#3 /chroot/home/S5175710/PHP_BACKEND/db_interface/query_wrapper.php(38): Query::create()
+#4 /chroot/home/S5175710/PHP_BACKEND/db_interface/db_virtualizer.php(74): QueryWrapper->getQuery()
+#5 /chroot/home/S5175710/PHP_BACKEND/db_interface/db_virtualizer.php(97): VirtualDB->getQuery()
+#6 /chroot/home/S5175710/SERVICES/Product.php(23): VirtualDB->executeQuery()
+#7 /chroot/home/S5175710/SERVICES/Product.php(69): OpenServicesProvider->getProduct()
+#8 /chroot/home/S5175710/PHP_BACKEND/service_handler/handler.php(160): OpenServicesProvider->getBestSellingProducts()
+#9 /chroot/home/S5175710/public_html/GATEWAY.php(112): ServicesHandler->callService()
+#10 {main}
+
+2024/09/08 22:01:18.429 b61utiplcdrftc16a605v5ckaj /~S5175710/product.php 79.40.123.151
+MissingDependencyException: autoloader defined in /chroot/home/S5175710/BOOTSTRAP/autoloader/locations_map.jsonis inconsistent.
+Cannot find file '/chroot/home/S5175710/PHP_BACKEND/db_interface/query/executor.php/plain_query.php', location of PlainQueryExecutor
+
+2024/09/11 14:28:35.590 vmoc2bl8pkvtfn6ert58gbm5qc /~S5175710/GATEWAY.php 109.118.68.251
+TypeError: UserServicesProvider::updateUserField(): Argument #2 ($new_value) must be of type string, null given, called in /chroot/home/S5175710/SERVICES/PersonalArea.php on line 93 and defined in /chroot/home/S5175710/SERVICES/PersonalArea.php:134
+Stack trace:
+#0 /chroot/home/S5175710/SERVICES/PersonalArea.php(93): UserServicesProvider->updateUserField()
+#1 /chroot/home/S5175710/PHP_BACKEND/service_handler/handler.php(170): UserServicesProvider->updateUserPhoneNumber()
+#2 /chroot/home/S5175710/public_html/GATEWAY.php(115): ServicesHandler->callService()
+#3 {main}
+
+2024/09/11 14:29:39.834 ca3rhed3foornqa3m589ef7651 /~S5175710/GATEWAY.php 130.251.214.86
+TypeError: UserServicesProvider::updateUserField(): Argument #2 ($new_value) must be of type string, null given, called in /chroot/home/S5175710/SERVICES/PersonalArea.php on line 93 and defined in /chroot/home/S5175710/SERVICES/PersonalArea.php:134
+Stack trace:
+#0 /chroot/home/S5175710/SERVICES/PersonalArea.php(93): UserServicesProvider->updateUserField()
+#1 /chroot/home/S5175710/PHP_BACKEND/service_handler/handler.php(170): UserServicesProvider->updateUserPhoneNumber()
+#2 /chroot/home/S5175710/public_html/GATEWAY.php(115): ServicesHandler->callService()
+#3 {main}
+
+2024/09/11 14:32:19.875 iirtn8sq93hbqjtm7f3mh7mnnp /~S5175710/GATEWAY.php 130.251.214.86
+TypeError: UserServicesProvider::updateUserField(): Argument #2 ($new_value) must be of type string, null given, called in /chroot/home/S5175710/SERVICES/PersonalArea.php on line 107 and defined in /chroot/home/S5175710/SERVICES/PersonalArea.php:134
+Stack trace:
+#0 /chroot/home/S5175710/SERVICES/PersonalArea.php(107): UserServicesProvider->updateUserField()
+#1 /chroot/home/S5175710/PHP_BACKEND/service_handler/handler.php(170): UserServicesProvider->updateUserFiscalCode()
+#2 /chroot/home/S5175710/public_html/GATEWAY.php(115): ServicesHandler->callService()
+#3 {main}
+
+2024/09/11 14:42:14.846 6br6g2s2igfb0v4fd8bkr19l4o /~S5175710/GATEWAY.php 130.251.248.69
+TypeError: UserServicesProvider::updateUserField(): Argument #2 ($new_value) must be of type string, null given, called in /chroot/home/S5175710/SERVICES/PersonalArea.php on line 93 and defined in /chroot/home/S5175710/SERVICES/PersonalArea.php:134
+Stack trace:
+#0 /chroot/home/S5175710/SERVICES/PersonalArea.php(93): UserServicesProvider->updateUserField()
+#1 /chroot/home/S5175710/PHP_BACKEND/service_handler/handler.php(170): UserServicesProvider->updateUserPhoneNumber()
+#2 /chroot/home/S5175710/public_html/GATEWAY.php(115): ServicesHandler->callService()
+#3 {main}
+
+2024/09/11 14:42:51.172 6br6g2s2igfb0v4fd8bkr19l4o /~S5175710/GATEWAY.php 130.251.248.69
+TypeError: UserServicesProvider::updateUserField(): Argument #2 ($new_value) must be of type string, null given, called in /chroot/home/S5175710/SERVICES/PersonalArea.php on line 93 and defined in /chroot/home/S5175710/SERVICES/PersonalArea.php:134
+Stack trace:
+#0 /chroot/home/S5175710/SERVICES/PersonalArea.php(93): UserServicesProvider->updateUserField()
+#1 /chroot/home/S5175710/PHP_BACKEND/service_handler/handler.php(170): UserServicesProvider->updateUserPhoneNumber()
+#2 /chroot/home/S5175710/public_html/GATEWAY.php(115): ServicesHandler->callService()
+#3 {main}
+

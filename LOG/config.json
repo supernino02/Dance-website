@@ -1,0 +1,7 @@
+{
+    "LOG_MODE":        "FILE",          
+    "LOG_FILE_PATH":   "LOG/LOG.log",
+    "LOG_QUERIES_PATH":"LOG/queries.json",
+
+    "LOG_ERRORS_PATH": "LOG/ERRORS.log"
+}

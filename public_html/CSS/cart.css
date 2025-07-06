@@ -1,0 +1,33 @@
+/* Hide the number input spin buttons */
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield; /* Modern browsers */
+  width: 40px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari, Edge */
+  margin: 0;
+}
+
+#priceHorizontalLine {
+  height: 2px;
+}
+
+#cartTotalContainer {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.cart #productsContainer img {
+  width: 150px;
+}
+
+.cart .cart-item-expiration-date {
+  color: #9e9e9e;
+}
+
+.cart .cart-item-x-sign {
+  cursor: pointer;
+}

@@ -1,0 +1,376 @@
+body.index-page {
+  padding: 0;
+}
+
+hr.purple {
+  color: var(--accent-color);
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 1);
+  opacity: 50% !important;
+}
+
+iframe {
+  width: 100%;
+  height: 270px;
+  border: 0;
+}
+
+/*--------------------------------------------------------------
+            Home Section
+--------------------------------------------------------------*/
+
+.home {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Assicura che gli elementi siano posizionati correttamente */
+  overflow: hidden; /* Evita che gli elementi fuoriescano */
+}
+
+.home img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Assicura che l'immagine copra tutta la sezione senza deformarsi */
+  z-index: 1;
+}
+
+.home:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.home .container {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px; /* Mantieni una larghezza massima del contenuto */
+}
+
+.home h2 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  font-family: var(--nav-font);
+}
+
+.home p {
+  margin: 10px 0 0 0;
+  font-size: 24px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.home .icon-box {
+  padding: 30px 20px;
+  transition: ease-in-out 0.3s;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  height: 100%; /* Assicura che il box delle icone si estenda a tutta l'altezza */
+  min-height: 200px; /* Imposta un'altezza minima per evitare che diventi troppo piccolo */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .icon-box i {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.home .icon-box h3 {
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.home .icon-box:hover {
+  border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .home h2 {
+    font-size: 32px;
+  }
+
+  .home .icon-box {
+    padding: 20px 15px; /* Riduce leggermente il padding per i dispositivi mobili */
+  }
+}
+
+/*--------------------------------------------------------------
+            Corsi Section
+--------------------------------------------------------------*/
+
+.corsi-buttons { /* div bottoni */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.corsi-button,
+.corsi-button:focus { /* singoli bottoni */
+  color: var(--contrast-color);
+  font-size: 16px;
+  padding: 8px 30px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+  border: 2px solid var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--default-background-color);
+  cursor: pointer;
+}
+
+.corsi-button:hover,
+.corsi-button:focus:hover {
+  color: var(--default-color);
+  background: var(--accent-color);
+}
+
+.corsi-button img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.corsi-button b {
+  font-size: 20px;
+  color: var(--heading-color);
+}
+
+.img-shadow {
+  box-shadow: 8px 8px 16px var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .corsi-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .corsi-button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/*--------------------------------------------------------------
+            Collaboratori Section
+--------------------------------------------------------------*/
+
+.collaboratori {
+  padding: 80px 0;
+  position: relative;
+  clip-path: inset(0);
+}
+
+.collaboratori img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.collaboratori:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 50%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.collaboratori .container {
+  position: relative;
+  z-index: 3;
+  font-size: 20px;
+}
+
+.collaboratori h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--default-color);
+}
+
+.collaboratori .cta-btn {
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 5px;
+  transition: 0.5s;
+  margin: 10px;
+  color: var(--contrast-color);
+}
+
+
+/*--------------------------------------------------------------
+            Eventi Section
+--------------------------------------------------------------*/
+
+.eventi .service-item {
+  background-color: var(--surface-color);
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  padding: 80px 20px;
+  height: 100%;
+  transition: all ease-in-out 0.3s;
+}
+
+.eventi .service-item .icon {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  margin: 0 auto;
+  width: 128px;
+  height: 128px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.eventi .service-item h3 {
+  font-weight: 700;
+  margin: 10px 0 15px 0;
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.eventi .service-item p {
+  line-height: 24px;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.eventi .service-item:hover {
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+}
+
+/*--------------------------------------------------------------
+            Membri Section
+--------------------------------------------------------------*/
+
+.membri {
+  position: relative;
+}
+
+.membri:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.membri .membri-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.membri .container {
+  position: relative;
+  z-index: 3;
+}
+
+.membri .testimonial-item {
+  text-align: center;
+}
+
+.membri .testimonial-item .testimonial-img {
+  width: 100px;
+  border-radius: 50%;
+  border: 6px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  margin: 0 auto;
+}
+
+.membri .testimonial-item h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.membri .testimonial-item h4 {
+  font-size: 18px;
+  margin: 0 0 15px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.membri .testimonial-item .quote-icon-left,
+.membri .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 22px;
+  line-height: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.membri .testimonial-item .quote-icon-right {
+  transform: scale(-1, -1);
+}
+
+.membri .testimonial-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+}
+
+@media (min-width: 992px) {
+  .membri .testimonial-item p {
+    width: 80%;
+  }
+}
+
+/*--------------------------------------------------------------
+            Contatti Section
+--------------------------------------------------------------*/
+
+.contatti .info-item {
+  margin-top: 40px;
+}
+
+.contatti .info-item i {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.contatti .info-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contatti .info-item p {
+  margin-bottom: 0;
+  font-size: 14px;
+}

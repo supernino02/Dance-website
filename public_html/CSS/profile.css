@@ -1,0 +1,57 @@
+.btn-edit {
+  background-color: var(--accent-color);
+  /* colore del pulsante in stile "btn-purple" */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit:hover {
+  background-color: var(--accent-color-hover-light);
+  /* colore scuro al passaggio del mouse */
+}
+
+.btn-edit-gray {
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showprofile-box-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.showprofile-box-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.showprofile-box-content .label {
+  flex: 1;
+  font-weight: bold;
+  color: #333;
+}
+
+#adminGif {
+  height: 300px; 
+  width: 250px;
+}

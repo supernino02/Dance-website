@@ -1,0 +1,446 @@
+/* ============================
+      Heading generale
+============================ */
+
+#headerDiv {
+  height: var(--heading-height);
+}
+
+.header {
+  --background-color: rgba(0, 0, 0, 0.8);
+  --heading-color: #ffffff;
+  --contrast-color: #ffffff;
+  background-color: var(--background-color);
+  padding: var(--heading-padding);
+  
+  z-index: 10100;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 36px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 32px;
+  margin: 0 10px 0 0;
+  font-weight: 700;
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+.index-page.scrolled .header {
+  --background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* ============================
+      Navbar
+============================ */
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu a {
+    color: var(--nav-color);
+    padding: 18px 15px;
+    font-size: 20px;
+    font-family: var(--nav-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    line-height: 0;
+  }
+
+  .navmenu .toggle-dropdown {
+    margin-left: 5px;
+  }
+
+  .navmenu .btn-purple,
+  .navmenu .btn-login,
+  .navmenu .btn-register,
+  .navmenu .btn-navicon {
+    color: var(--contrast-color);
+    padding: 10px 10px;
+    margin: 0 0 0 30px;
+    border-radius: 25px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .btn-navicon {
+    font-size: 24px;
+  }
+
+  .navmenu .btn-purple:hover,
+  .navmenu .btn-purple:focus,
+  .navmenu .btn-login:hover,
+  .navmenu .btn-login:focus,
+  .navmenu .btn-register:hover,
+  .navmenu .btn-register:focus,
+  .navmenu .btn-navicon:hover,
+  .navmenu .btn-navicon:focus {
+    color: var(--default-color);
+    background: var(--accent-color);
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--contrast-color);
+    background: var(--accent-color);
+    
+  }
+
+  /* Ripristino della posizione e dell'estetica dei dropdown */
+  .navmenu .dropdown ul {
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 18px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    background-color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -100%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+
+  /* mostra titolo .sitename */
+  .header .sitename {
+    display: block;
+  }
+
+  /* nascondi titolo .sitename-small */
+  .header .sitename-small {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    overflow-y: auto;
+    z-index: 9998;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .btn-purple:hover,
+  .navmenu .btn-login:hover,
+  .navmenu .btn-register:hover {
+    text-decoration: underline;
+    
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 20px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), white 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: color-mix(in srgb, var(--accent-color), white 90%);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    background-color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    transform: rotate(180deg);
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu>ul {
+    display: block;
+  }
+
+  /* mostra titolo .sitename */
+  .header .sitename {
+    display: block;
+  }
+
+  /* nascondi titolo .sitename-small */
+  .header .sitename-small {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  /* nascondi titolo .sitename */
+  .header .sitename {
+    display: none;
+  }
+
+  /* mostra titolo .sitename-small */
+  .header .sitename-small {
+    display: block;
+  }
+}
+
+
+/* ============================
+      Barra di ricerca
+============================ */
+
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 10101;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 100px;
+  overflow: hidden;
+}
+
+.search-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.search-bar {
+  width: 100%;
+  display: flex;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 10102;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.search-bar .close-search {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.search-results {
+  width: 100%;
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-height: 50vh;
+  overflow-y: auto;
+  display: none;
+}
+
+.search-results a:hover {
+  background: var(--accent-color-hover-light);
+}
+
+.search-result-item {
+  background-color: var(--background-color-light);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.search-result-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.search-overlay.active {
+  display: flex;
+}
+
+.search-title h1 {
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.result-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+/* ============================
+      Cart Badge
+============================ */
+
+#cart-badge {
+  font-size: 16px;
+  padding: 0.25em 0.4em;
+  transform: translate(-50%, -50%);
+  display: none;
+}

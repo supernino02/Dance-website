@@ -1,0 +1,791 @@
+/*--------------------------------------------------------------
+            General Styling
+--------------------------------------------------------------*/
+
+body {
+  padding-top: var(--heading-size);
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: none;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+.service-box {
+  background-color: var(--surface-color);
+  padding: 20px;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-box+.service-box {
+  margin-top: 30px;
+}
+
+.service-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.sitename {
+  white-space: nowrap; /* impedisce al testo di andare a capo */
+}
+
+.spinner-border {
+  display: block;
+  margin: 20px auto;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.capitalizeFirstLetter {
+  text-transform: capitalize;
+}
+
+/* per immagini carosello a schermo intero */
+#fullscreenImage {
+  position: fixed;
+  margin-top: 0;
+  padding-top: var(--heading-size);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.9);
+  z-index: 999999;
+  /* Assicura che il div sia sopra altri contenuti */
+  display: flex;
+  /* Utilizza flexbox per centrare l'immagine */
+  align-items: center;
+  /* Allinea l'immagine verticalmente */
+  justify-content: center;
+  /* Allinea l'immagine orizzontalmente */
+}
+
+#fullscreenImg {
+  max-width: 100%;
+  /* Limita la larghezza massima dell'immagine al 100% del contenitore */
+  max-height: 100%;
+  /* Limita l'altezza massima dell'immagine al 100% del contenitore */
+  object-fit: contain;
+  /* Mantiene le proporzioni dell'immagine e la adatta al contenitore */
+}
+.modal {
+  padding-top: var(--heading-size);
+}
+
+#serviceSelectContainer {
+  display: none;
+}
+
+/*--------------------------------------------------------------
+            Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #000;
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+            Bottone scroll-top
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 5000;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  box-shadow: #fff 0 0 10px;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+            Disattiva animazione AOS su mobile
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+            Titoli globali
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  position: relative;
+}
+
+.page-title .heading {
+  padding: 50px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.page-title .heading h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+/*--------------------------------------------------------------
+            Sezioni
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  padding: 60px 0;
+  scroll-margin-top: 80px;
+  overflow: clip;
+}
+
+section.home {
+  padding: 100px 0;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 58px;
+  }
+}
+
+.section-title {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  position: relative;
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: var(--accent-color);
+  margin: 4px 10px;
+}
+
+.section-title p {
+  color: var(--heading-color);
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.container .fst-italic {
+  font-size: 20px;
+}
+
+/*--------------------------------------------------------------
+            Bottoni
+--------------------------------------------------------------*/
+.btn-purple {
+  background-color: var(--accent-color);
+  border-color: var(--contrast-color);
+  color: white;
+}
+
+.btn-purple-focus-purple:focus-visible {
+  background-color: var(--accent-color) !important;
+}
+
+.btn-purple:hover {
+  background-color: var(--accent-color-hover-light);
+  border-color: var(--accent-color-hover-dark);
+}
+
+/*--------------------------------------------------------------
+            Card dei prodotti
+--------------------------------------------------------------*/
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.img-corso {
+  height: 250px;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  object-fit: contain;
+}
+
+.product-icon {
+  position: absolute;
+  left: 0;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.expiration-icon {
+  top: 0;
+  color: black;
+  background-color: #ffc107;
+}
+
+.discount-icon {
+  color: black;
+  background-color: #dc3545;
+}
+
+.discount-icon.below-expiration { /* aggiunta di un margine superiore per posizionare sotto l'icona di scadenza */
+  top: 30px;
+}
+
+.discount-icon.top-left { /* se non c'è l'icona di scadenza, lo sconto sta in alto */
+  top: 0;
+}
+
+/*--------------------------------------------------------------
+  Sezione prodotti + Dettagli prodotti + corsi.php + eventi.php
+--------------------------------------------------------------*/
+
+.products .products-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.products .products-item .products-info {
+  opacity: 0;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -100%;
+  z-index: 3;
+  transition: all ease-in-out 0.5s;
+  background: color-mix(in srgb, var(--background-color), transparent 10%);
+  padding: 15px;
+}
+
+.products .products-item .products-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  padding-right: 50px;
+}
+
+.products .products-item .products-info p {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 14px;
+  margin-bottom: 0;
+  padding-right: 50px;
+}
+
+.products .products-item .products-info .preview-link,
+.products .products-item .products-info .details-link {
+  position: absolute;
+  right: 50px;
+  font-size: 24px;
+  top: calc(50% - 14px);
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  transition: 0.3s;
+  line-height: 0;
+}
+
+.products .products-item .products-info .preview-link:hover,
+.products .products-item .products-info .details-link:hover {
+  color: var(--accent-color);
+}
+
+.products .products-item .products-info .details-link {
+  right: 14px;
+  font-size: 28px;
+}
+
+.products .products-item:hover .products-info {
+  opacity: 1;
+  bottom: 0;
+}
+
+.products #products-container .products-item .img-evento {
+  height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.products #imagesCarousel {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.products .carousel-inner {
+  width: 100%;
+  height: 100%;
+  padding-top: 100%;
+}
+
+.products .carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.products .carousel-image {
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  object-fit: contain;
+}
+
+.products .product-description {
+  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.products .related-products,
+.products .filtro-products {
+  background-color: var(--surface-color);
+}
+
+.products .related-products a,
+.products .filtro-products a {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.products .related-products a:first-child,
+.products .filtro-products a:first-child {
+  margin-top: 0;
+}
+
+.products .related-products a i,
+.products .filtro-products a i {
+  font-size: 16px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+.products .related-products a.active,
+.products .filtro-products a.active {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+}
+
+.products .related-products a.active i,
+.products .filtro-products a.active i {
+  color: var(--contrast-color);
+}
+
+.products .related-products a:hover,
+.products .filtro-products a:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+}
+
+.products h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.product-info-price-tag .cancelled-price-tag {
+  text-decoration: line-through;
+}
+
+.product-info-price-tag .real-price-tag {
+  color: red; 
+  font-weight: bold;
+}
+
+.order-item,
+.product-item {
+  position: relative;
+}
+
+.order-item .order-date {
+  font-size: 0.875em;
+}
+
+.order-item .order-total {
+  margin-left: 10px;
+}
+
+.loading-product-error-icon {
+  color: rgb(220, 53, 69);
+}
+
+#productsContent,
+#ordersContent,
+#profileContent {
+  display: none;
+}
+
+#titoloFiltroTipo,
+#titoloFiltroLivello,
+#titoloFiltroDisciplina {
+  cursor: pointer;
+}
+
+#titoloFiltroTipo span,
+#titoloFiltroLivello span,
+#titoloFiltroDisciplina span {
+  color: var(--accent-color);
+}
+
+#erroreLivelliCorsi,
+#erroreDisciplineCorsi,
+#erroreDisciplineEventi {
+  background-color: var(--bs-danger-bg-subtle);
+}
+
+/*--------------------------------------------------------------
+            Reviews
+--------------------------------------------------------------*/
+
+.review-item {
+  background-color: #f8f9fa;
+}
+
+.review-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.review-stars .bi {
+  font-size: 1.2rem;
+  margin-right: 0.2rem;
+}
+
+.review-text {
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+#reviewsSummary {
+  padding-bottom: 25px;
+}
+
+#starRating i {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+  /* Colore stelle inattive */
+}
+
+#starRating i.active {
+  color: var(--accent-color);
+  /* Colore stelle attive */
+}
+
+#starRating i.half-active {
+  color: var(--accent-color);
+  /* Colore stelle a metà attive */
+}
+
+.highlighted-review {
+  background-color: rgba(243, 222, 255, 0.644);
+  border: 3px solid rgb(115, 7, 173) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bi.bi-star-fill {
+  color: rgb(228, 229, 233);
+}
+
+.emoji,
+.perc_reviews {
+  font-size: 1.5em;
+}
+
+.progress-bar {
+  transition: width 0.6s ease-out;
+  background-color: var(--accent-color-hover-dark);
+}
+
+#toggleReviews {
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+#orderByDiv {
+  display: none;
+}
+
+#toggleReviews .dropdown-item.active {
+  color: var(--bs-dropdown-link-active-color);
+  text-decoration: none;
+  background-color: var(--accent-color);
+}
+
+#noReviewsAlert {
+  color: red; 
+  font-weight: bold; 
+  font-size: 18px;
+}
+
+.review-button-placeholder {
+  width: 150px;
+}
+
+.review-placeholder {
+  display: none;
+}
+
+.download-button-placeholder {
+  display: none; 
+  width: 150px;
+}
+
+/*--------------------------------------------------------------
+            Toast
+--------------------------------------------------------------*/
+
+.toast {
+  margin-bottom: 1rem;
+  /* Spazio tra i toast */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.toast-ok {
+  background-color: var(--bs-success-bg-subtle);
+  /* Opacità del colore di sfondo */
+  border: 3px solid var(--bs-success-border-subtle) !important;
+  /* Colore del bordo */
+}
+
+.toast-fail {
+  background-color: var(--bs-danger-bg-subtle);
+  /* Opacità del colore di sfondo */
+  border: 3px solid var(--bs-danger-border-subtle) !important;
+  /* Colore del bordo */
+}
+
+.toast-error {
+  background-color: var(--bs-warning-bg-subtle);
+  /* Opacità del colore di sfondo */
+  border: 3px solid var(--bs-warning-border-subtle) !important;
+  /* Colore del bordo */
+}
+
+.toast .toast-body {
+  white-space: nowrap;
+  /* Per evitare il wrapping del testo */
+}
+
+/*--------------------------------------------------------------
+            Cookie Banner
+--------------------------------------------------------------*/
+
+#cookie-modal {
+  max-height: 80vh;
+}
+
+.modal-header .nav-tabs .nav-item .nav-link {
+  border: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.modal-header .nav-tabs .nav-item .nav-link.active {
+  color: #495057;
+  border-bottom: 2px solid #007bff;
+}
+
+.collapse-cookie-info {
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.modal-dialog {
+  width: 80% !important;
+  max-width: 80% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cookie-icon {
+  display: none;
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+  z-index: 5000;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  box-shadow: #fff 0 0 10px;
+}
+
+#cookie-icon i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+#cookie-icon:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+#cookie-icon.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+#cookieModal {
+  overflow: hidden;
+}
+
+#cookieModal .btn-close {
+  margin: 10px 0 0 10px;
+}
+
+#cookieModal .cookie-description {
+  display: none;
+}
+
+#cookieModal .tab-pane:not(.show) {
+  display: none !important;
+  transition: opacity 0.15s ease-in-out;
+  opacity: 0;
+}
+
+#cookieModal .tab-pane.show {
+  display: block;
+  opacity: 1;
+  /* Mostra solo la tab attiva */
+}
+
+#cookieModal .btn-purple {
+  background-color: var(--accent-color) !important;
+  border-color: var(--contrast-color) !important;
+  color: white !important;
+}
+
+#cookieModal .nav-link:not(.active) {
+  color: var(--accent-color);
+}
+
+.collapse-cookie-info.active {
+  border-color: var(--accent-color);
+}
+
+.btn-outline-purple {
+  --bs-btn-color: var(--accent-color);
+  --bs-btn-border-color: var(--accent-color);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--accent-color);
+  --bs-btn-hover-border-color: var(--accent-color);
+  --bs-btn-focus-shadow-rgb: 13, 110, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--accent-color);
+  --bs-btn-active-border-color: var(--accent-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--accent-color);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--accent-color);
+  --bs-gradient: none;
+}

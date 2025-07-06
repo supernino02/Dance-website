@@ -1,0 +1,66 @@
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  position: relative;
+}
+
+.footer .footer-top {
+  padding: 50px 0;
+  background-color: color-mix(in srgb, var(--footer-background-color) 90%, white 10%);
+}
+
+.footer .footer-about .logo {
+  line-height: 1;
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.footer h4 {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-links ul {
+  font-size: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 5px;
+}
+
+.footer .footer-links ul i {
+  margin-right: 4px;
+  font-size: 12px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-links ul a:hover {
+  color: var(--accent-color);
+}
+
+#toasters {
+  z-index: 6000;
+}

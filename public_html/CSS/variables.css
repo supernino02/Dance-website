@@ -1,0 +1,53 @@
+/* Fonts */
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Roboto", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
+
+/* Colori globali */
+:root {
+  --background-color: #ffffff;
+  --default-color: #444444;
+  --heading-color: #151515;
+  --accent-color: #b300ff;
+  --accent-color-hover-light: #d167ff;
+  --accent-color-hover-dark: #7500a7;
+  --surface-color: #ffffff;
+  --contrast-color: #312f2f;
+}
+
+/* Colori Navbar */
+:root {
+  --nav-color: rgba(255, 255, 255, 0.905);
+  --nav-hover-color: #b300ff;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #212529;
+  --nav-dropdown-hover-color: #b300ff;
+}
+
+/* Preset dei colori, queste classi fanno un override dei globali quando applicati */
+.light-background {
+  --background-color: #f9f9f9;
+  --surface-color: #ffffff;
+}
+.dark-background {
+  --background-color: #060606;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
+  --contrast-color: #2a2727;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/* Variabili globali */
+:root {
+  --heading-padding: 10px;
+  --heading-height: 50px;
+  --heading-size: calc(var(--heading-padding) + var(--heading-height));
+}
